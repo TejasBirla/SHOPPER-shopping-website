@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.breadcrum {
+    font-weight: 600;
+    font-size: 16px;
+    color: #5e5e5e;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 60px 170px;
+    text-transform: capitalize;
+}

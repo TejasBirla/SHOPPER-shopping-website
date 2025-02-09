@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cart-items {
+    margin: 80px 100px;
+}
+
+.cart-items hr {
+    width: 100%;
+    height: 3px;
+    border: 0;
+    background: #e2e2e2;
+}
+
+.cart-item-format-main {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 80px;
+    padding: 20px 0px;
+    color: #454545;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.cart-item-format {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.cart-item-img {
+    height: 100px;
+}
+
+.remove-icon {
+    width: 15px;
+    margin: 0px 40px;
+    cursor: pointer;
+}
+
+.cart-quantity {
+    width: 62px;
+    height: 50px;
+    border: 2px solid #ebebeb;
+    background: #fff;
+}
+
+.cart-item-down {
+    display: flex;
+    margin: 100px 0px;
+}
+
+.cart-item-total {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 200px;
+    gap: 40px;
+}
+
+.cart-item-total-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0px;
+}
+
+.cart-item-total button {
+    width: 262px;
+    height: 58px;
+    border: none;
+    outline: none;
+    background: #ff5a5a;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cart-item-promocode {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.cart-item-promocode p {
+    color: #555;
+    font-size: 16px;
+}
+
+.promobox {
+    width: 500px;
+    height: 58px;
+    padding-left: 20px;
+    margin-top: 15px;
+    background: #eaeaea;
+    position: relative;
+}
+
+.promobox input {
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    width: 300px;
+    height: 50px;
+    font-weight: 500;
+}
+
+.promobox .input-icon {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.promobox button {
+    width: 161px;
+    height: 58px;
+    font-size: 16px;
+    background: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 58px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
