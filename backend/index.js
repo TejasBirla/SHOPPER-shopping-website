@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 const { error } = require("console");
 require("dotenv").config();
 const app = express();
-const PORT = process.env.PORT || 4000;
+// const PORT = process.env.PORT || 4000;
 
 //built-in Middleware
 app.use(express.json());
@@ -354,6 +354,8 @@ const sendMail = (toEmail, subject, text) => {
 };
 
 // Start the server
-app.listen(PORT, () => {
-  console.log("Server is running at port", PORT);
-});
+// app.listen(PORT, () => {
+//   console.log("Server is running at port", PORT);
+// });
+
+module.exports = app;
