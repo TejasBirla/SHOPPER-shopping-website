@@ -6,7 +6,7 @@
 
 .news-letter {
     width: 88%;
-    height: 40vh;
+    height: 48vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +21,8 @@
 
 .news-letter h1 {
     color: #454545;
-    font-size: 48px;
+    font-size: 45px;
+    margin-top: 25px;
     font-weight: 600;
 }
 
@@ -50,8 +51,7 @@
     font-size: 16px;
 }
 
-.news-letter div button
-{
+.news-letter div button {
     width: 210px;
     height: 70px;
     border-radius: 80px;
@@ -62,98 +62,17 @@
 }
 
 
-@media (max-width: 1024px) {
-    .news-letter {
-        width: 90%;
-        height: 35vh;
-        padding: 0px 80px;
-        gap: 20px;
-    }
-
-    .news-letter h1 {
-        font-size: 40px;
-    }
-
-    .news-letter p {
-        font-size: 18px;
-    }
-
-    .news-letter div {
-        width: 600px;
-        height: 60px;
-    }
-
-    .news-letter div input {
-        width: 400px;
-        font-size: 14px;
-    }
-
-    .news-letter div button {
-        width: 180px;
-        height: 60px;
-        font-size: 14px;
-    }
+.newsletter-success-message {
+    font-size: 17px;
+    color: #22bb33;
 }
 
-@media (max-width: 768px) {
-    .news-letter {
-        width: 95%;
-        height: auto;
-        padding: 40px 20px;
-        text-align: center;
-    }
-
-    .news-letter h1 {
-        font-size: 35px;
-    }
-
-    .news-letter p {
-        font-size: 16px;
-    }
-
-    .news-letter div {
-        width: 100%;
-        height: 55px;
-        flex-direction: column;
-        border-radius: 10px;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .news-letter div input {
-        width: 90%;
-        margin-left: 0;
-        height: 40px;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    .news-letter div button {
-        width: 100%;
-        height: 45px;
-        font-size: 14px;
-    }
+.newsletter-error-message {
+    font-size: 17px;
+    color: #ff4141;
 }
 
-@media (max-width: 480px) {
-    .news-letter h1 {
-        font-size: 28px;
-    }
-
-    .news-letter p {
-        font-size: 14px;
-    }
-
-    .news-letter div {
-        width: 100%;
-        height: auto;
-    }
-
-    .news-letter div input {
-        font-size: 12px;
-    }
-
-    .news-letter div button {
-        font-size: 12px;
-    }
+.newsletter-info-message{
+    font-size: 15px;
+    color:#454545;
 }

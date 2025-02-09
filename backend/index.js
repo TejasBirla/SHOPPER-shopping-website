@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 const { error } = require("console");
 require("dotenv").config();
 const app = express();
-// const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 
 //built-in Middleware
 app.use(express.json());
@@ -255,6 +255,38 @@ app.get("/newcollections", async (req, res) => {
   res.send(newCollection);
 });
 
+app.post("/newsletter", authenticateToken, async (req, res) => {
+  const userEmail = req.body.email;
+  if (!userEmail) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Email is required" });
+  }
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: userEmail,
+      subject: "Subscription Successful!",
+      text: "Thank you for subscribing to our newsletter!",
+    };
+    await transporter.sendMail(mailOptions);
+    res.json({
+      success: true,
+      message: "Subscription email sent successfully",
+    });
+  } catch (error) {
+    console.error("Email error:", error);
+    res.status(500).json({ success: false, message: "Failed to send email" });
+  }
+});
+
 // Get Popular Products for Women Route
 app.get("/popularinwomen", async (req, res) => {
   let products = await Product.find({ category: "Women" });
@@ -265,9 +297,7 @@ app.get("/popularinwomen", async (req, res) => {
 // Get User Orders Route
 app.get("/myorders", authenticateToken, async (req, res) => {
   try {
-    const orders = await Order.find({ userID: req.user.id }).populate(
-      "products.productID"
-    );
+    const orders = await Order.find({ userID: req.user.id });
 
     res.json({ success: true, orders });
   } catch (error) {
@@ -353,9 +383,6 @@ const sendMail = (toEmail, subject, text) => {
   });
 };
 
-// Start the server
-// app.listen(PORT, () => {
-//   console.log("Server is running at port", PORT);
-// });
-
-module.exports = app;
+app.listen(PORT, () => {
+  console.log("Server is running at port", PORT);
+});

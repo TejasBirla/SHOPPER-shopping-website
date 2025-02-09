@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./CSS/LoginSignup.css";
-
 export default function LoginSignup() {
   const [state, setState] = useState("Login");
   const [formData, setFormData] = useState({
@@ -12,6 +11,7 @@ export default function LoginSignup() {
     username: "",
     email: "",
     password: "",
+    checkbox: "",
   });
   const [checkboxChecked, setCheckboxChecked] = useState(false);
 
@@ -49,7 +49,7 @@ export default function LoginSignup() {
       isValid = false;
     }
 
-    if (!checkboxChecked) {
+    if (state === "Signup" && !checkboxChecked) {
       newErrors.checkbox = "You must agree to the terms and conditions.";
       isValid = false;
     }
@@ -110,24 +110,15 @@ export default function LoginSignup() {
 
   const handleStateChange = (newState) => {
     setState(newState);
-    setErrors({ username: "", email: "", password: "" });
+    setErrors({ username: "", email: "", password: "", checkbox: "" });
 
-    // Reset the formData based on the state
-    if (newState === "Login") {
-      setFormData({
-        username: "",
-        password: "",
-        email: "",
-      });
-      setCheckboxChecked(false); // Reset the checkbox for login
-    } else {
-      setFormData({
-        username: "",
-        password: "",
-        email: "",
-      });
-      setCheckboxChecked(false); // Reset the checkbox for signup
-    }
+    setFormData({
+      username: "",
+      password: "",
+      email: "",
+    });
+
+    setCheckboxChecked(false);
   };
 
   return (
@@ -191,23 +182,21 @@ export default function LoginSignup() {
             </>
           )}
         </p>
-        <div className="loginsignup-agree">
-          {state === "Signup" && (
-            <>
-              <input
-                type="checkbox"
-                checked={checkboxChecked}
-                onChange={handleCheckboxChange}
-              />
-              <span>
-                By continuing, I agree to the terms of use and privacy policies.
-              </span>
-              {errors.checkbox && (
-                <span className="error-message">{errors.checkbox}</span>
-              )}
-            </>
-          )}
-        </div>
+        {state === "Signup" && (
+          <div className="loginsignup-agree">
+            <input
+              type="checkbox"
+              checked={checkboxChecked}
+              onChange={handleCheckboxChange}
+            />
+            <span>
+              By continuing, I agree to the terms of use and privacy policies.
+            </span>
+            {errors.checkbox && (
+              <span className="error-message">{errors.checkbox}</span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

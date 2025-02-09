@@ -76,9 +76,9 @@ export default function ProductDisplay(props) {
         <button className="addCartbtn" onClick={handleAddtoCart}>
           ADD TO CART
         </button>
-        {error && <p style={{ color: "red", fontSize: "17px" }}>{error}</p>}
+        {error && <p style={{ color: "#ff4141", fontSize: "17px" }}>{error}</p>}
         {message && (
-          <p style={{ color: "green", fontSize: "17px" }}>{message}</p>
+          <p style={{ color: "#22bb33", fontSize: "17px" }}>{message}</p>
         )}
       </div>
     </div>

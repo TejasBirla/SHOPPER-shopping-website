@@ -10,6 +10,7 @@ export default function Hero() {
 
   const handleNavigate = () => {
     navigate("/women");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
     <div className="hero">

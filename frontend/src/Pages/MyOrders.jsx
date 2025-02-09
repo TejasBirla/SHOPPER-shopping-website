@@ -16,7 +16,7 @@ const MyOrder = () => {
       }
 
       try {
-        const response = await fetch("http:localhost:4000/myorders", {
+        const response = await fetch("http://localhost:4000/myorders", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
