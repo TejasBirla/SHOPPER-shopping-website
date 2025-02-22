@@ -298,7 +298,6 @@ app.get("/popularinwomen", async (req, res) => {
 app.get("/myorders", authenticateToken, async (req, res) => {
   try {
     const orders = await Order.find({ userID: req.user.id });
-
     res.json({ success: true, orders });
   } catch (error) {
     res.status(500).json({ success: false, message: "Server Error", error });
@@ -333,7 +332,7 @@ app.post("/addtocart", fetchUser, async (req, res) => {
 //Remove to Cart Route
 app.post("/removetocart", fetchUser, async (req, res) => {
   const userData = await Users.findOne({ _id: req.user.id });
-  userData.cartData[req.body.itemID] -= 1;
+  userData.cartData[req.body.itemID] = 0;
 
   await Users.findOneAndUpdate(
     { _id: req.user.id },
