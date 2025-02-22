@@ -23,6 +23,8 @@ export default function ProductDisplay(props) {
     } else {
       addtoCart(product.id);
       setMessage("Item added to cart.");
+      setSize(null);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
   return (
