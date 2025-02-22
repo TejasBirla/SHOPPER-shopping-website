@@ -65,7 +65,7 @@ export const ShopContextProvider = (props) => {
   const removetoCart = (itemID) => {
     setCartItems((prev) => ({
       ...prev,
-      [itemID]: prev[itemID] - 1,
+      [itemID]: 0,
     }));
     if (localStorage.getItem("auth-token")) {
       fetch("http://localhost:4000/removetocart", {
