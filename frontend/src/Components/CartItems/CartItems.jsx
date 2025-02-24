@@ -3,8 +3,10 @@ import "./CartItems.css";
 import { ShopContext } from "../../Contexts/ShopContext";
 import removeIcon from "../assets/Frontend_Assets/cart_cross_icon.png";
 import dropDownIcon from "../assets/Frontend_Assets/dropdown_icon.png";
+import { useNavigate } from "react-router-dom";
 
 export default function CartItems() {
+  const navigate = useNavigate();
   const { all_product, removetoCart, cartItems, getTotalCartAmount } =
     useContext(ShopContext);
 
@@ -72,6 +74,7 @@ export default function CartItems() {
                   src={product.image}
                   alt={product.name}
                   className="cart-item-img"
+                  onClick={() => navigate(`/product/${product.id}`)}
                 />
                 <p>{product.name}</p>
                 <p>₹{product.new_price.toFixed(2)}</p>
