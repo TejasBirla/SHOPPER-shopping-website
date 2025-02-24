@@ -33,6 +33,7 @@
 
 .cart-item-img {
     height: 100px;
+    cursor: pointer;
 }
 
 .remove-icon {
@@ -148,4 +149,3 @@
 .dropdown-item:hover {
     background-color: #f1f1f1;
 }
-
