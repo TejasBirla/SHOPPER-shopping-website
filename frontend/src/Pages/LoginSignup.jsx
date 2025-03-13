@@ -17,10 +17,20 @@ export default function LoginSignup() {
 
   const handleCheckboxChange = (event) => {
     setCheckboxChecked(event.target.checked);
+
+     setErrors((prevErrors) => ({
+       ...prevErrors,
+       checkbox: "",
+     }));
   };
 
   const changeHandler = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [event.target.name]: "",
+    }));
   };
 
   const validateForm = () => {
