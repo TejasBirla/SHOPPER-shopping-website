@@ -76,7 +76,9 @@ export default function CartItems() {
                   className="cart-item-img"
                   onClick={() => navigate(`/product/${product.id}`)}
                 />
-                <p>{product.name}</p>
+                <p onClick={() => navigate(`/product/${product.id}`)} style={{cursor:"pointer"}}>
+                  {product.name}
+                </p>
                 <p>₹{product.new_price.toFixed(2)}</p>
                 <button className="cart-quantity">
                   {cartItems[product.id]}
