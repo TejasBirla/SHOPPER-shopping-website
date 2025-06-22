@@ -5,18 +5,15 @@ import Item from "../Components/Item/item";
 
 export default function ShopCategory(props) {
   const { all_product } = useContext(ShopContext);
+
   return (
     <>
       <div className="shop-category">
-        <img
-          className="shop-category-banner"
-          src={props.banner}
-          alt=""
-        />
+        <img className="shop-category-banner" src={props.banner} alt="" />
 
         <div className="shop-category-products">
           {all_product.map((value, index) => {
-            if (props.category === value.category) {
+            if (props.category.toLowerCase() === value.category.toLowerCase()) {
               return (
                 <Item
                   key={index}
