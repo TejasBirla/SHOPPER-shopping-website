@@ -29,6 +29,7 @@
     flex-direction: column;
     gap: 30px;
     margin-top: 14px;
+    position: relative;
 }
 
 .loginsignup-fields input {
@@ -46,7 +47,7 @@
     height: 60px;
     color: white;
     background: #ff4141;
-    margin-top: 15px;
+    margin-top: 35px;
     border: none;
     font-size: 18px;
     font-weight: 500;
@@ -64,6 +65,18 @@
     color: #ff4141;
     cursor: pointer;
     font-weight: 500;
+}
+
+.forgot-password {
+    position: absolute;
+    right: 0px;
+    top: 112%;
+    color: #5c5c5c;
+    margin-top: -15px;
+    padding-left: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .loginsignup-agree {
@@ -88,4 +101,3 @@
     padding-left: 5px;
     font-weight: 500;
 }
-
