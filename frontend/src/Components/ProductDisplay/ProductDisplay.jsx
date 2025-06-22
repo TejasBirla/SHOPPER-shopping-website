@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./ProductDisplay.css";
 import starIcon from "../assets/Frontend_Assets/star_icon.png";
 import starDullIcon from "../assets/Frontend_Assets/star_dull_icon.png";
@@ -10,6 +10,12 @@ export default function ProductDisplay(props) {
   const [selectedSize, setSize] = useState(null);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setError("");
+    setMessage("");
+    setSize(null);
+  }, [product]);
 
   const handleSize = (size) => {
     setSize(size);
