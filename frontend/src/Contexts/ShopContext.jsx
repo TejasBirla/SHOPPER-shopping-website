@@ -1,9 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
-import all_product from "../Components/assets/Frontend_Assets/all_product";
 
 const defaultCart = () => {
   let cart = {};
-  for (let i = 0; i < 300 + 1; i++) {
+  for (let i = 0; i < 100 + 1; i++) {
     cart[i] = 0;
   }
   return cart;
@@ -13,6 +12,21 @@ export const ShopContext = createContext(null);
 
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(defaultCart());
+  const [all_product, setAllProducts] = useState([]);
+
+  const fetchAllProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/allproducts", {
+        method: "GET",
+      });
+      const data = await response.json();
+      if (data.success) {
+        setAllProducts(data.allProduct);
+      }
+    } catch (error) {
+      console.log("Error in fetching all products from server ", error.message);
+    }
+  };
 
   const fetchcartData = async () => {
     const token = localStorage.getItem("auth-token");
@@ -38,6 +52,7 @@ export const ShopContextProvider = (props) => {
   };
 
   useEffect(() => {
+    fetchAllProducts();
     fetchcartData();
   }, []);
 

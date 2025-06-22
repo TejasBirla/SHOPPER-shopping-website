@@ -5,7 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
-const { error } = require("console");
+const { error, timeStamp } = require("console");
 require("dotenv").config();
 const app = express();
 const PORT = 4000;
@@ -60,6 +60,12 @@ const Order = mongoose.model("Order", {
   orderDate: { type: Date, default: Date.now },
   status: { type: String, default: "Pending" }, // "Pending", "Completed", "Cancelled"
   paymentStatus: { type: String, default: "Pending" },
+});
+
+const VerificationCode = mongoose.model("VerificationCode", {
+  email: { type: String, required: true },
+  code: { type: Number, required: true },
+  createdAt: { type: Date, default: Date.now, expires: 120 },
 });
 
 // JWT Token Authentication Middleware
@@ -182,6 +188,180 @@ app.post("/login", async (req, res) => {
   }
 });
 
+app.post("/send-verification-code", async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.json({
+      success: false,
+      message: "Email address is required. Please provide a valid email.",
+    });
+  }
+
+  try {
+    const existingUser = await Users.findOne({ email });
+    if (!existingUser) {
+      return res.json({
+        success: false,
+        message: "This email is not registered. Please signup first.",
+      });
+    }
+
+    // Find the last OTP request for this email
+    const lastOtpRequest = await VerificationCode.findOne({ email }).sort({
+      createdAt: -1,
+    });
+
+    // If last OTP request exists and it was made less than 5 minutes ago, deny the request
+    if (lastOtpRequest && Date.now() - lastOtpRequest.createdAt < 300000) {
+      return res.json({
+        success: false,
+        message:
+          "You can only request a new OTP every 5 minutes. Please try again later.",
+      });
+    }
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+
+    const newCode = new VerificationCode({ email, code });
+    await newCode.save();
+
+    const subject = "Password Reset Verification Code - Shopper";
+    const text = `Dear user,\n\nYour verification code for resetting your password is: ${code}\n\nPlease note that this code is valid for 2 minutes.\n\nIf you did not request this, please ignore this email.\n\nThank you,\nTeam Shopper`;
+
+    sendMail(email, subject, text);
+
+    return res.json({
+      success: true,
+      message:
+        "A verification code has been sent to your email address. Please check your inbox.",
+    });
+  } catch (error) {
+    console.error("Error occurred while sending verification code:", error);
+    return res.json({
+      success: false,
+      message: "An internal server error occurred. Please try again later.",
+    });
+  }
+});
+
+app.post("/verifycode", async (req, res) => {
+  const { email, code } = req.body;
+  if (!email || !code) {
+    return res.json({
+      success: false,
+      message: "Email and verification code is required.",
+    });
+  }
+  try {
+    const record = await VerificationCode.findOne({ email, code });
+    if (!record) {
+      return res.json({
+        success: false,
+        message: "Invalid verification code.",
+      });
+    }
+    const codeCreationTime = record.createdAt;
+    const currentTime = Date.now();
+    const timeDifference = (currentTime - codeCreationTime) / 1000;
+
+    if (timeDifference > 120) {
+      return res.json({
+        success: false,
+        message:
+          "Verification code is expired. Please request for new verification code.",
+      });
+    }
+    return res.json({
+      success: true,
+      message: "Verification successful. You may now reset your password.",
+    });
+  } catch (error) {
+    console.log("Error occur: ", error);
+    return res.json({
+      success: false,
+      message: "Server error try again later.",
+    });
+  }
+});
+
+app.post("/reset-password", async (req, res) => {
+  const { email, newPassword } = req.body;
+  if (!email || !newPassword) {
+    return res.json({
+      success: false,
+      message: "Email and password are required.",
+    });
+  }
+  try {
+    const user = await Users.findOne({ email });
+    if (!user) {
+      return res.json({
+        success: false,
+        message: "No account found with the provided email.",
+      });
+    }
+    user.password = newPassword;
+    await user.save();
+    return res.json({
+      success: true,
+      message: "Password has been successfully reset.",
+    });
+  } catch (error) {
+    console.log("Error occur: ", error);
+    return res.json({
+      success: false,
+      message: "Server error please try again.",
+    });
+  }
+});
+
+app.post("/resend-otp", async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.json({
+      success: false,
+      message: "Email address is required. Please provide a valid email.",
+    });
+  }
+
+  try {
+    const existingUser = await Users.findOne({ email });
+    if (!existingUser) {
+      return res.json({
+        success: false,
+        message: "This email is not registered. Please signup first.",
+      });
+    }
+
+    // Generate a new OTP
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Save the new OTP to the database
+    const newCode = new VerificationCode({ email, code });
+    await newCode.save();
+
+    // Send the OTP via email (or any other method)
+    const subject = "Password Reset Verification Code - Shopper";
+    const text = `Dear user,\n\nYour new verification code for resetting your password is: ${code}\n\nPlease note that this code is valid for 2 minutes.\n\nIf you did not request this, please ignore this email.\n\nThank you,\nTeam Shopper`;
+
+    sendMail(email, subject, text);
+
+    return res.json({
+      success: true,
+      message:
+        "A new verification code has been sent to your email address. Please check your inbox.",
+    });
+  } catch (error) {
+    console.error("Error occurred while resending verification code:", error);
+    return res.json({
+      success: false,
+      message: "An internal server error occurred. Please try again later.",
+    });
+  }
+});
+
 // File Upload Route (Multer)
 const storage = multer.diskStorage({
   destination: "./uploads/images",
@@ -200,11 +380,12 @@ app.use("/images", express.static("uploads/images"));
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `http://localhost:${port}/images/${req.file.filename}`,
+    image_url: `http://localhost:${PORT}/images/${req.file.filename}`,
   });
 });
 
 // Add Product Route
+
 app.post("/addproduct", async (req, res) => {
   const products = await Product.find({});
   let id;
@@ -245,7 +426,7 @@ app.post("/removeproduct", async (req, res) => {
 app.get("/allproducts", async (req, res) => {
   const allProduct = await Product.find({});
   console.log(allProduct);
-  res.send(allProduct);
+  res.json({ success:true, allProduct: allProduct });
 });
 
 // Get New Collections Route
