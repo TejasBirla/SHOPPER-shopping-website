@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar/navbar";
 import Shop from "./Pages/Shop";
@@ -11,10 +11,12 @@ import men_banner from "./Components/assets/Frontend_Assets/banner_mens.png";
 import women_banner from "./Components/assets/Frontend_Assets/banner_women.png";
 import kids_banner from "./Components/assets/Frontend_Assets/banner_kids.png";
 import MyOrder from "./Pages/MyOrders";
+import Verificationcode from "./Pages/Verificationcode";
+import OTPverify from "./Pages/OTPverify";
+import ResetPassword from "./Pages/ResetPassword";
 
-
-
-function App () {
+function App() {
+  const token = localStorage.getItem("auth-token");
   return (
     <div>
       <BrowserRouter>
@@ -27,16 +29,28 @@ function App () {
           />
           <Route
             path="/women"
-            element={<ShopCategory banner={women_banner} category="women"/>}
+            element={<ShopCategory banner={women_banner} category="women" />}
           />
           <Route
             path="/kids"
-            element={<ShopCategory banner={kids_banner} category="kid" />}
+            element={<ShopCategory banner={kids_banner} category="kids" />}
           />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/myorders" element={<MyOrder />} />
+          <Route
+            path="/verificationcode"
+            element={!token ? <Verificationcode /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/otpverify"
+            element={!token ? <OTPverify /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/resetpassword"
+            element={!token ? <ResetPassword /> : <Navigate to="/" />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
