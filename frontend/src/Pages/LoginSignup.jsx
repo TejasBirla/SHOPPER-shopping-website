@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CSS/LoginSignup.css";
+
 export default function LoginSignup() {
+  const Navigate = useNavigate();
   const [state, setState] = useState("Login");
   const [formData, setFormData] = useState({
     username: "",
@@ -18,10 +21,10 @@ export default function LoginSignup() {
   const handleCheckboxChange = (event) => {
     setCheckboxChecked(event.target.checked);
 
-     setErrors((prevErrors) => ({
-       ...prevErrors,
-       checkbox: "",
-     }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      checkbox: "",
+    }));
   };
 
   const changeHandler = (event) => {
@@ -168,7 +171,16 @@ export default function LoginSignup() {
             name="password"
             value={formData.password}
             onChange={changeHandler}
+            className="password-input"
           />
+          {state === "Login" && (
+            <span
+              className="forgot-password"
+              onClick={() => Navigate("/verificationcode")}
+            >
+              Forgot Password?
+            </span>
+          )}
           {errors.password && (
             <span className="error-message">{errors.password}</span>
           )}
