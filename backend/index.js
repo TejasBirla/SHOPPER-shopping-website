@@ -127,7 +127,7 @@ app.post("/signup", async (req, res) => {
   }
 
   const cart = {};
-  for (let i = 1; i < 300; i++) {
+  for (let i = 1; i < 100; i++) {
     cart[i] = 0;
   }
 
@@ -425,8 +425,7 @@ app.post("/removeproduct", async (req, res) => {
 // Get All Products Route
 app.get("/allproducts", async (req, res) => {
   const allProduct = await Product.find({});
-  console.log(allProduct);
-  res.json({ success:true, allProduct: allProduct });
+  res.json({ success: true, allProduct: allProduct });
 });
 
 // Get New Collections Route
