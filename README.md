@@ -61,5 +61,5 @@ This project was built to:
 Feel free to reach out if you have suggestions or want to collaborate!
 
 **Developer**: Tejas Birla  
-**Email**: [tejasbirla3@gmail.com]
+**Email**: [tejasbirla3@gmail.com](mailto:tejasbirla3@gmail.com)
 ---
