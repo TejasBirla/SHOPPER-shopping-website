@@ -38,11 +38,11 @@ The project consists of three main parts:
 
 - `frontend/` – User-facing React app for browsing products, cart, and placing orders  
 - `backend/` – Node.js + Express backend with MongoDB for managing users, products, orders, and emails  
-- `admin-panel/` – Separate React app for admins to log in and manage product listings  
+- `admin/` – Separate React app for admins to log in and manage product listings  
 
 ## ⚙️ Tech Stack
 
-- **Frontend & Admin**: React.js, Axios, CSS
+- **Frontend & Admin**: React.js, Fetch, CSS
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB with Mongoose
 - **Authentication**: JWT
@@ -61,7 +61,5 @@ This project was built to:
 Feel free to reach out if you have suggestions or want to collaborate!
 
 **Developer**: Tejas Birla  
-**Email**: [your-email@example.com]  
-**GitHub**: [https://github.com/TejasBirla](https://github.com/TejasBirla)
-
+**Email**: [tejasbirla3@gmail.com]
 ---
