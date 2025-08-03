@@ -143,14 +143,11 @@
 
 }
 
-
-
-
 @media(max-width:500px) {
     .offer {
         height: 25vh;
-        width: 78%;
-        margin-top: 80px;
+        width: 100%;
+        margin-top: 65px;
         margin-bottom: 50px;
     }
 

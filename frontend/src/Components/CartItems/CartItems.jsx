@@ -169,9 +169,10 @@ export default function CartItems() {
 
             <input
               type="text"
-              placeholder="Enter your promo code"
+              placeholder="Select promo code"
               value={promoCode}
-              onChange={(e) => setPromoCode(e.target.value)}
+              readOnly
+              style={{ cursor: "default" }}
             />
 
             {isDropDownClicked && (

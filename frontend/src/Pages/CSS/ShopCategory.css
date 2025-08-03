@@ -40,5 +40,14 @@
 @media(max-width:500px) {
     .shop-category-products {
         grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 45px;
+    }
+
+    .shop-category-products .item:hover {
+        transform: none;
+        transition: none;
     }
 }

@@ -300,7 +300,7 @@
     }
 
     .product-display-left {
-        gap: 10px;
+        gap: 3px;
         flex-direction: row;
         margin: auto;
     }
@@ -311,11 +311,12 @@
     }
 
     .img-list img {
-        height: 75px;
+        height: 70px;
     }
 
     .product-display-main-img {
         height: 320px;
+        padding: 10px;
     }
 
     .product-display-right {

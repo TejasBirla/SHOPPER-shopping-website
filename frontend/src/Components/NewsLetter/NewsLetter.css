@@ -161,14 +161,13 @@
     }
 }
 
-
-
 @media(max-width:500px) {
     .news-letter {
         height: 25vh;
         width: 100%;
         gap: 15px;
         padding: 0;
+        margin-bottom: 35px;
     }
 
     .news-letter h1 {
@@ -183,9 +182,10 @@
     }
 
     .newsletter-info-message {
-        font-size: 12px;
+        font-size: 10px;
         max-width: 450px;
         text-align: center;
+        padding: 5px;
     }
 
     .news-letter div {
@@ -195,7 +195,7 @@
 
     .news-letter div input {
         width: 130px;
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .newsletter-error-message,

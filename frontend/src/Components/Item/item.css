@@ -132,4 +132,9 @@
     .item-old-price {
         font-size: 12px;
     }
+        .item:hover {
+            transform: none;
+            transition: none;
+        }
+    
 }
