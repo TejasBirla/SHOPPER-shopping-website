@@ -86,7 +86,7 @@
         width: 100px;
     }
 
-    .related-product-item {
+    .related-product-items {
         gap: 25px;
     }
 }
@@ -96,7 +96,7 @@
         height: 90vh;
     }
 
-    .related-product-item {
+    .related-product-items {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
