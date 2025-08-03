@@ -75,7 +75,7 @@ export default function LoginSignup() {
     if (!validateForm()) return;
 
     let responseData;
-    await fetch("http://localhost:4000/login", {
+    await fetch("http://localhost:4000/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export default function LoginSignup() {
     if (!validateForm()) return;
 
     let responseData;
-    await fetch("http://localhost:4000/signup", {
+    await fetch("http://localhost:4000/api/users/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -204,21 +204,6 @@ export default function LoginSignup() {
             </>
           )}
         </p>
-        {state === "Signup" && (
-          <div className="loginsignup-agree">
-            <input
-              type="checkbox"
-              checked={checkboxChecked}
-              onChange={handleCheckboxChange}
-            />
-            <span>
-              By continuing, I agree to the terms of use and privacy policies.
-            </span>
-            {errors.checkbox && (
-              <span className="error-message">{errors.checkbox}</span>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );

@@ -7,8 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function CartItems() {
   const navigate = useNavigate();
-  const { all_product, removetoCart, cartItems, getTotalCartAmount } =
-    useContext(ShopContext);
+  const {
+    all_product,
+    removetoCart,
+    cartItems,
+    getTotalCartAmount,
+    initiateShopperPayment,
+  } = useContext(ShopContext);
 
   const [isDropDownClicked, setDropDownClicked] = useState(false);
   const [promoCode, setPromoCode] = useState("");
@@ -76,7 +81,10 @@ export default function CartItems() {
                   className="cart-item-img"
                   onClick={() => navigate(`/product/${product.id}`)}
                 />
-                <p onClick={() => navigate(`/product/${product.id}`)} style={{cursor:"pointer"}}>
+                <p
+                  onClick={() => navigate(`/product/${product.id}`)}
+                  style={{ cursor: "pointer" }}
+                >
                   {product.name}
                 </p>
                 <p>₹{product.new_price.toFixed(2)}</p>
@@ -131,7 +139,21 @@ export default function CartItems() {
             </div>
             <hr />
           </div>
-          <button>PROCEED TO CHECKOUT</button>
+          <button
+            onClick={() => {
+              const selectedProducts = all_product
+                .filter((product) => cartItems[product.id] > 0)
+                .map((product) => ({
+                  _id: product._id,
+                  quantity: cartItems[product.id],
+                  new_price: product.new_price,
+                }));
+
+              initiateShopperPayment(selectedProducts, newTotalAmt);
+            }}
+          >
+            PROCEED TO CHECKOUT
+          </button>
         </div>
         <div className="cart-item-promocode">
           <p>If you have a promo code, enter it here:</p>

@@ -5,7 +5,7 @@ import Item from "../Item/item";
 export default function NewCollections() {
   const [new_collection, set_new_collections] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/newcollections")
+    fetch("http://localhost:4000/api/products/newcollections")
       .then((res) => res.json())
       .then((data) => set_new_collections(data));
   }, []);

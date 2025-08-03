@@ -18,3 +18,33 @@
     gap: 20px;
     margin-bottom: 100px;
 }
+
+@media(max-width:1280px) {
+    .shop-category-banner {
+        margin: 20px auto;
+        width: 90%;
+    }
+
+    .shop-category-products {
+        width: 90%;
+        margin: 10px auto;
+        row-gap: 40px;
+    }
+
+}
+
+@media(max-width:800px) {
+    .shop-category-banner {
+        width: 95%;
+    }
+
+    .shop-category-products {
+        width: 95%;
+    }
+}
+
+@media(max-width:500px) {
+    .shop-category-products {
+        grid-template-columns: 1fr 1fr;
+    }
+}

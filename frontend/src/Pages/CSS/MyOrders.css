@@ -1,51 +1,119 @@
 .myorder-container {
-    padding: 20px;
-    max-width: 900px;
+    padding: 30px 20px;
+    max-width: 1000px;
     margin: auto;
     margin-bottom: 100px;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.myorder-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
 }
 
 .myorder-loading,
-.myorder-error {
+.myorder-error,
+.myorder-empty {
     text-align: center;
-    font-size: 18px;
-    color: #ff0000;
+    font-size: 1.2rem;
+    color: #ff4444;
 }
 
 .myorder-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .myorder-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.myorder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-id {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.myorder-status {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.myorder-status.paid {
+    background-color: #e0ffe0;
+    color: #28a745;
+}
+
+.myorder-status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.myorder-date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
 }
 
 .myorder-products {
-    margin-top: 10px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .myorder-product {
     display: flex;
     gap: 15px;
-    margin-bottom: 10px;
-    padding: 10px;
     border: 1px solid #eee;
-    border-radius: 5px;
+    border-radius: 8px;
+    padding: 12px;
+    background-color: #f9f9f9;
+    align-items: center;
 }
 
 .myorder-product-image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #ddd;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+.myorder-product-details {
+    flex: 1;
+}
+
+.myorder-product-details h5 {
+    margin: 0;
+    font-size: 15px;
+    color: #222;
+}
+
+.myorder-product-details p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.myorder-total {
+    margin-top: 10px;
+    text-align: right;
+    color: #000;
+    font-size: 16px;
 }

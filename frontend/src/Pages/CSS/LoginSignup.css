@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -100,4 +100,178 @@
     margin-top: -25px;
     padding-left: 5px;
     font-weight: 500;
+} */
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.loginSignup {
+    width: 100%;
+    min-height: 100vh;
+    background: #fce3fe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.loginsignup-container {
+    width: 100%;
+    max-width: 460px;
+    background: #fff;
+    padding: 36px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.loginsignup-container h1 {
+    font-size: 30px;
+    margin-bottom: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.loginsignup-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+}
+
+.loginsignup-fields input {
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid #c9c9c9;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+}
+
+.forgot-password {
+    text-align: right;
+    font-size: 14px;
+    color: #5c5c5c;
+    cursor: pointer;
+    margin-top: -8px;
+}
+
+.error-message {
+    display: block;
+    font-size: 13px;
+    color: #ff4141;
+    margin-top: -6px;
+    margin-bottom: 6px;
+    padding-left: 4px;
+}
+
+.loginsignup-container button {
+    width: 100%;
+    height: 48px;
+    margin-top: 20px;
+    background: #ff4141;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.loginsignup-container button:hover {
+    opacity: 0.9;
+}
+
+.loginsignup-login {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #5c5c5c;
+    text-align: center;
+}
+
+.loginsignup-login span {
+    color: #ff4141;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* =================== Responsive Breakpoints =================== */
+
+@media (max-width: 1280px) {
+    .loginsignup-container {
+        max-width: 440px;
+        padding: 32px;
+    }
+
+    .loginsignup-container h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .loginsignup-container {
+        max-width: 400px;
+        padding: 28px;
+    }
+
+    .loginsignup-fields input {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 800px) {
+    .loginsignup-container {
+        max-width: 360px;
+        padding: 24px;
+    }
+
+    .loginsignup-container h1 {
+        font-size: 26px;
+    }
+
+    .loginsignup-container button {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .loginsignup-login {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .loginsignup-container {
+        max-width: 100%;
+        padding: 20px 16px;
+    }
+
+    .loginsignup-container h1 {
+        font-size: 22px;
+    }
+
+    .loginsignup-fields input {
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .loginsignup-container button {
+        font-size: 14px;
+        height: 44px;
+    }
+
+    .forgot-password {
+        font-size: 13px;
+    }
+
+    .loginsignup-login {
+        font-size: 13px;
+    }
 }

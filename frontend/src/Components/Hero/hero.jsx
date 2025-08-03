@@ -21,10 +21,8 @@ export default function Hero() {
             <p>New</p>
             <img src={Handicon} alt="hand-icon" />
           </div>
-          <p>
-            Collections <br />
-            for everyone
-          </p>
+          <p>Collections</p>
+          <p>for everyone</p>
         </div>
         <div className="hero-new-btn" onClick={handleNavigate}>
           <div>Latest Collection</div>
@@ -32,7 +30,7 @@ export default function Hero() {
         </div>
       </div>
       <div className="hero-right-sec">
-        <img src={Heroimg} alt="" />
+        <img src={Heroimg} alt="hero-img" />
       </div>
     </div>
   );

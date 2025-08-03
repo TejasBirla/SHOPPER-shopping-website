@@ -37,17 +37,21 @@ export default function ProductDisplay(props) {
     <div className="product-display">
       <div className="product-display-left">
         <div className="img-list">
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
+          <img src={product?.image} alt="" />
+          <img src={product?.image} alt="" />
+          <img src={product?.image} alt="" />
+          <img src={product?.image} alt="" />
+        </div>
+        <div className="product-display-img">
+          <img
+            className="product-display-main-img"
+            src={product?.image}
+            alt=""
+          />
         </div>
       </div>
-      <div className="product-display-img">
-        <img className="product-display-main-img" src={product.image} alt="" />
-      </div>
       <div className="product-display-right">
-        <h1>{product.name}</h1>
+        <h1>{product?.name}</h1>
         <div className="product-display-star">
           <img src={starIcon} alt="" />
           <img src={starIcon} alt="" />
@@ -57,8 +61,8 @@ export default function ProductDisplay(props) {
           <p>(122)</p>
         </div>
         <div className="product-right-prices">
-          <div className="old-price">₹{product.old_price.toFixed(2)}</div>
-          <div className="new-price">₹{product.new_price.toFixed(2)}</div>
+          <div className="old-price">₹{product?.old_price.toFixed(2)}</div>
+          <div className="new-price">₹{product?.new_price.toFixed(2)}</div>
         </div>
         <div className="product-desc">
           <p>
@@ -67,7 +71,7 @@ export default function ProductDisplay(props) {
             making it suitable for various occasions.
           </p>
         </div>
-        <div className="prodcut-size">
+        <div className="product-size">
           <h2>Select size</h2>
         </div>
         <div className="product-sizes">
@@ -82,12 +86,10 @@ export default function ProductDisplay(props) {
           ))}
         </div>
         <button className="addCartbtn" onClick={handleAddtoCart}>
-          ADD TO CART
+          Add to cart
         </button>
-        {error && <p style={{ color: "#ff4141", fontSize: "17px" }}>{error}</p>}
-        {message && (
-          <p style={{ color: "#22bb33", fontSize: "17px" }}>{message}</p>
-        )}
+        {error && <p className="product-display-error-mess">{error}</p>}
+        {message && <p className="product-display-succ-mess">{message}</p>}
       </div>
     </div>
   );

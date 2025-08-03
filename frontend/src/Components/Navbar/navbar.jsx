@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import "./navbar.css";
 import logo from "../assets/Frontend_Assets/logo.png";
 import cartIcon from "../assets/Frontend_Assets/cart_icon.png";
+import navDropDown from "../assets/Frontend_Assets/nav_dropdown.png";
 import { Link, useLocation } from "react-router-dom";
 import { ShopContext } from "../../Contexts/ShopContext";
 
@@ -9,6 +10,12 @@ export default function Navbar() {
   let { getTotalCartItems } = useContext(ShopContext);
   const isLoggedIn = localStorage.getItem("auth-token");
   const location = useLocation(); // Get the current route
+  const menuRef = useRef();
+
+  const dropDown_toggle = (e) => {
+    menuRef.current.classList.toggle("nav-menu-visible");
+    e.target.classList.toggle("open");
+  };
 
   return (
     <div className="navbar">
@@ -16,7 +23,13 @@ export default function Navbar() {
         <img src={logo} alt="website-logo" />
         <p>SHOPPER</p>
       </div>
-      <ul className="nav-menu">
+      <img
+        src={navDropDown}
+        alt="nav-drop-down"
+        className="nav-dropdown"
+        onClick={dropDown_toggle}
+      />
+      <ul className="nav-menu" ref={menuRef}>
         <li>
           <Link style={{ textDecoration: "none" }} to="/">
             Shop

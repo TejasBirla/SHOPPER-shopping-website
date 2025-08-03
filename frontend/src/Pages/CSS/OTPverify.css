@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -113,4 +113,221 @@
     color: #22bb33;
     font-weight: 500;
     font-size: 16px;
+} */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.otp {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 50px;
+    background: #fce3fe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.otp-container {
+    width: 100%;
+    max-width: 620px;
+    background: white;
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.otp-container h1 {
+    margin: 16px 0px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.otp-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 14px;
+}
+
+.otp-container button {
+    width: 100%;
+    height: 60px;
+    color: white;
+    background: #ff4141;
+    margin-top: 2px;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.otp-container button:hover {
+    opacity: 0.9;
+}
+
+.otp-container-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.otp-boxes {
+    height: 60px;
+    width: 60px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 20px;
+    outline: none;
+}
+
+.otp-note {
+    margin-top: -10px;
+    font-size: 16px;
+    padding-left: 5px;
+    color: #5c5c5c;
+    margin-bottom: -15px;
+    font-style: italic;
+}
+
+.timer-paragraph {
+    color: #5c5c5c;
+    font-size: 18px;
+    text-align: center;
+}
+
+.timer-paragraph span {
+    color: #000;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.timer-expired {
+    color: #ff4141;
+    font-weight: 500;
+    text-align: center;
+}
+
+.resend-otp {
+    color: #007bff;
+    font-size: 17px;
+    margin-left: 4px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.otp-error {
+    display: inline-block;
+    color: #ff4141;
+    font-size: 16px;
+    margin-top: -15px;
+    padding-left: 5px;
+    font-weight: 500;
+}
+
+.otp-success {
+    padding-left: 5px;
+    color: #22bb33;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* ------------------- Responsive Media Queries ------------------- */
+
+/* For laptops/desktops <= 1280px */
+@media (max-width: 1280px) {
+    .otp-container {
+        padding: 35px 45px;
+    }
+
+    .otp-boxes {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+/* For tablets <= 1024px */
+@media (max-width: 1024px) {
+    .otp-container {
+        padding: 30px 30px;
+    }
+
+    .otp-boxes {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .otp-container button {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .otp-container h1 {
+        font-size: 28px;
+    }
+}
+
+/* For small tablets <= 800px */
+@media (max-width: 800px) {
+    .otp-container {
+        padding: 25px 20px;
+    }
+
+    .otp-boxes {
+        width: 45px;
+        height: 45px;
+        font-size: 17px;
+    }
+
+    .otp-container button {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .otp-container h1 {
+        font-size: 26px;
+    }
+}
+
+/* For mobile devices <= 500px */
+@media (max-width: 500px) {
+    .otp-container {
+        padding: 20px 16px;
+    }
+
+    .otp-boxes {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+    }
+
+    .otp-container button {
+        font-size: 14px;
+        height: 44px;
+    }
+
+    .otp-container h1 {
+        font-size: 22px;
+    }
+
+    .timer-paragraph,
+    .timer-expired,
+    .resend-otp,
+    .otp-error,
+    .otp-success {
+        font-size: 13px;
+    }
 }

@@ -72,7 +72,140 @@
     color: #ff4141;
 }
 
-.newsletter-info-message{
+.newsletter-info-message {
     font-size: 15px;
-    color:#454545;
+    color: #454545;
+}
+
+@media(max-width:1280px) {
+    .news-letter {
+        padding: 0px 80px;
+        margin-bottom: 120px;
+        gap: 20px;
+    }
+}
+
+@media(max-width:1024px) {
+    .news-letter {
+        margin-bottom: 60px;
+    }
+
+    .news-letter h1 {
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    .news-letter p {
+        font-size: 18px;
+    }
+
+    .newsletter-info-message {
+        font-size: 13px;
+    }
+
+    .news-letter div {
+        width: 500px;
+        height: 50px;
+    }
+
+    .news-letter div input {
+        width: 300px;
+        font-size: 14px;
+    }
+
+    .news-letter div button {
+        width: 110px;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .newsletter-error-message,
+    .newsletter-success-message {
+        font-size: 14px;
+    }
+}
+
+@media(max-width:800px) {
+    .news-letter {
+        margin-bottom: 30px;
+        height: 35vh;
+    }
+
+    .news-letter h1 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .news-letter p {
+        font-size: 12px;
+    }
+
+    .newsletter-info-message {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .news-letter div {
+        width: 400px;
+        height: 40px;
+    }
+
+    .news-letter div input {
+        width: 200px;
+        font-size: 13px;
+    }
+
+    .news-letter div button {
+        width: 100px;
+        height: 40px;
+        font-size: 13px;
+    }
+
+    .newsletter-error-message,
+    .newsletter-success-message {
+        font-size: 12px;
+    }
+}
+
+
+
+@media(max-width:500px) {
+    .news-letter {
+        height: 25vh;
+        width: 100%;
+        gap: 15px;
+        padding: 0;
+    }
+
+    .news-letter h1 {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .news-letter p {
+        font-size: 12px;
+        max-width: 200px;
+        text-align: center;
+    }
+
+    .newsletter-info-message {
+        font-size: 12px;
+        max-width: 450px;
+        text-align: center;
+    }
+
+    .news-letter div {
+        width: 290px;
+        height: 40px;
+    }
+
+    .news-letter div input {
+        width: 130px;
+        font-size: 13px;
+    }
+
+    .newsletter-error-message,
+    .newsletter-success-message {
+        font-size: 12px;
+    }
 }

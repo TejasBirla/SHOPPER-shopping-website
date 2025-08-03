@@ -6,9 +6,9 @@ export default function Breadcrum(props) {
   const { product } = props;
   return (
     <div className="breadcrum">
-      SHOP <img src={arrowIcon} alt="" />
-      {product.category} <img src={arrowIcon} alt="" />
-      {product.name}
+      SHOP <img src={arrowIcon} alt="arrow-icon" />
+      {product?.category} <img src={arrowIcon} alt="" />
+      {product?.name}
     </div>
   );
 }

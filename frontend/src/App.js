@@ -14,6 +14,7 @@ import MyOrder from "./Pages/MyOrders";
 import Verificationcode from "./Pages/Verificationcode";
 import OTPverify from "./Pages/OTPverify";
 import ResetPassword from "./Pages/ResetPassword";
+import Payment from "./Components/payment/Payment";
 
 function App() {
   const token = localStorage.getItem("auth-token");
@@ -51,7 +52,9 @@ function App() {
             path="/resetpassword"
             element={!token ? <ResetPassword /> : <Navigate to="/" />}
           />
+          <Route path="/payment/success" element={<Payment />} />
         </Routes>
+
         <Footer />
       </BrowserRouter>
     </div>

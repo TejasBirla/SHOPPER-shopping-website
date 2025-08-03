@@ -37,6 +37,7 @@
     gap: 10px;
     margin-top: 6px;
     justify-content: center;
+    align-items: center;
 }
 
 .item-new-price {
@@ -54,4 +55,87 @@
 
 .item:hover {
     transform: scale(1.05);
+    transition: 0.6s;
+}
+
+
+@media(max-width:1280px) {
+    .item {
+        width: 225px;
+    }
+
+    .item img {
+        width: 200px;
+        height: 230px;
+    }
+
+    .item p {
+        font-size: 14px;
+    }
+
+    .item-new-price,
+    .item-old-price {
+        font-size: 14px;
+    }
+}
+
+@media(max-width:1024px) {
+    .item {
+        width: 190px;
+    }
+
+    .item img {
+        width: 170px;
+        height: 210px;
+    }
+
+    .item p {
+        font-size: 13px;
+    }
+
+    .item-new-price,
+    .item-old-price {
+        font-size: 13px;
+    }
+}
+
+@media(max-width:800px) {
+    .item {
+        width: 140px;
+    }
+
+    .item img {
+        width: 125px;
+        height: 170px;
+    }
+
+    .item p {
+        font-size: 12px;
+    }
+
+    .item-new-price,
+    .item-old-price {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:500px) {
+    .item {
+        width: 165px;
+    }
+
+    .item img {
+        width: 150px;
+        height: 170px;
+        object-fit: cover;
+    }
+
+    .item p {
+        font-size: 12px;
+    }
+
+    .item-new-price,
+    .item-old-price {
+        font-size: 12px;
+    }
 }

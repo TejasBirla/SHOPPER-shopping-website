@@ -1,0 +1,19 @@
+.payment-status-page {
+    text-align: center;
+    padding-top: 5rem;
+    margin-bottom: 13rem;
+    font-family: Arial, sans-serif;
+}
+
+.loading-msg p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.success-msg {
+    color: green;
+}
+
+.error-msg {
+    color: red;
+}

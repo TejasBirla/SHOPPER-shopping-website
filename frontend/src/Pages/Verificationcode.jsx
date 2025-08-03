@@ -54,7 +54,7 @@ export default function Verificationcode() {
 
     try {
       let response = await fetch(
-        "http://localhost:4000/send-verification-code",
+        "http://localhost:4000/api/users/sendcode",
         {
           method: "POST",
           headers: {

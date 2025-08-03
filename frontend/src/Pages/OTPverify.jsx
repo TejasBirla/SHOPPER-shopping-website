@@ -73,7 +73,7 @@ export default function OTPverify() {
     }
 
     try {
-      const response = await fetch("http://localhost:4000/verifycode", {
+      const response = await fetch("http://localhost:4000/api/users/verify-code", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,8 +103,8 @@ export default function OTPverify() {
     }
   };
 
-  const handleResetOTP = async () => {
-    let response = await fetch("http://localhost:4000/resend-otp", {
+  const handleResendOTP = async () => {
+    let response = await fetch("http://localhost:4000/api/users/resend-code", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -156,7 +156,7 @@ export default function OTPverify() {
             ) : (
               <p className="timer-expired">
                 ⏱️ OTP expired.{" "}
-                <span className="resend-otp" onClick={handleResetOTP}>
+                <span className="resend-otp" onClick={handleResendOTP}>
                   Resend OTP?
                 </span>
               </p>

@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -79,4 +79,177 @@
     margin-top: -20px;
     padding-left: 5px;
     font-weight: 500;
+} */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.verificationcode {
+    width: 100%;
+    min-height: 100vh;
+    background: #fce3fe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.verificationcode-container {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    padding: 36px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.verificationcode-container h1 {
+    margin-bottom: 24px;
+    font-size: 30px;
+    color: #333;
+    text-align: center;
+}
+
+.verificationcode-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.verificationcode-fields input {
+    height: 50px;
+    padding: 0 16px;
+    font-size: 16px;
+    border: 1px solid #c9c9c9;
+    border-radius: 6px;
+    color: #333;
+    outline: none;
+    width: 100%;
+}
+
+.info-message {
+    margin-top: -10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #454545;
+    padding-left: 2px;
+}
+
+.verificationcode-container button {
+    height: 50px;
+    width: 100%;
+    margin-top: -8px;
+    background: #ff4141;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.verificationcode-container button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.verificationcode-container button:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.verification-success,
+.verification-error {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: -12px;
+    padding-left: 2px;
+}
+
+.verification-success {
+    color: #22bb33;
+}
+
+.verification-error {
+    color: #ff4141;
+}
+
+/* =================== Responsive Breakpoints =================== */
+
+/* ↓↓↓ 1280px ↓↓↓ */
+@media (max-width: 1280px) {
+    .verificationcode-container {
+        max-width: 440px;
+        padding: 32px;
+    }
+
+    .verificationcode-container h1 {
+        font-size: 28px;
+    }
+}
+
+/* ↓↓↓ 1024px ↓↓↓ */
+@media (max-width: 1024px) {
+    .verificationcode-container {
+        max-width: 400px;
+        padding: 28px;
+    }
+
+    .verificationcode-fields input {
+        font-size: 15px;
+    }
+}
+
+/* ↓↓↓ 800px ↓↓↓ */
+@media (max-width: 800px) {
+    .verificationcode-container {
+        max-width: 360px;
+        padding: 24px;
+    }
+
+    .verificationcode-container h1 {
+        font-size: 26px;
+    }
+
+    .verificationcode-container button {
+        height: 46px;
+        font-size: 15px;
+    }
+
+    .info-message {
+        font-size: 13px;
+    }
+}
+
+/* ↓↓↓ 500px ↓↓↓ */
+@media (max-width: 500px) {
+    .verificationcode-container {
+        max-width: 100%;
+        padding: 20px 16px;
+    }
+
+    .verificationcode-container h1 {
+        font-size: 22px;
+    }
+
+    .verificationcode-fields input {
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .verificationcode-container button {
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .verification-success,
+    .verification-error {
+        font-size: 14px;
+    }
 }

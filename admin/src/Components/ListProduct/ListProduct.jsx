@@ -6,9 +6,9 @@ export default function ListProduct() {
   const [allproducts, setAllProducts] = useState([]);
 
   const fetchInfo = async () => {
-    await fetch("http://localhost:4000/allproducts")
+    await fetch("http://localhost:4000/api/products/allproducts")
       .then((resp) => resp.json())
-      .then((data) => setAllProducts(data));
+      .then((data) => setAllProducts(data.allProduct));
   };
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function ListProduct() {
   }, []);
 
   const removeProduct = async (id) => {
-    await fetch("http://localhost:4000/removeproduct", {
+    await fetch("http://localhost:4000/api/products/removeproduct", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -40,7 +40,7 @@ export default function ListProduct() {
       </div>
       <div className="listitems">
         <hr />
-        {allproducts.map((product, index) => {
+        {allproducts?.map((product, index) => {
           return (
             <>
               <div className="main format" key={index}>

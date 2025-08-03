@@ -6,7 +6,7 @@ export default function Popular() {
   let [data_product, set_data_product] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/popularinwomen")
+    fetch("http://localhost:4000/api/products/popularinwomen")
       .then((res) => res.json())
       .then((data) => set_data_product(data));
   }, []);

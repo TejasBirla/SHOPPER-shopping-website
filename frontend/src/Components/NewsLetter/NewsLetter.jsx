@@ -6,6 +6,11 @@ export default function NewsLetter() {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
+  const handleEmailInput = (event) => {
+    setEmail(event.target.value);
+    setError("");
+  };
+
   const handleSubscription = async () => {
     const token = localStorage.getItem("auth-token");
     if (!token) {
@@ -24,14 +29,17 @@ export default function NewsLetter() {
       return;
     }
     try {
-      const resposne = await fetch("http://localhost:4000/newsletter", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ email }),
-      });
+      const resposne = await fetch(
+        "http://localhost:4000/api/products/newsletter",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
       const data = await resposne.json();
       if (data.success) {
         setMessage(data.message);
@@ -64,7 +72,7 @@ export default function NewsLetter() {
           type="email"
           placeholder="Your email ID"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleEmailInput}
         />
         <button onClick={handleSubscription}>Subscribe</button>
       </div>
@@ -73,4 +81,3 @@ export default function NewsLetter() {
     </div>
   );
 }
-
