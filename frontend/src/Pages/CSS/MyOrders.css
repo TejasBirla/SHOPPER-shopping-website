@@ -117,3 +117,82 @@
     color: #000;
     font-size: 16px;
 }
+
+
+@media (max-width: 1024px) {
+    .myorder-container {
+        padding: 20px 15px;
+    }
+
+    .myorder-title {
+        font-size: 2rem;
+    }
+
+    .order-id {
+        font-size: 18px;
+    }
+
+    .myorder-status {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+
+    .myorder-product-image {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    .myorder-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .myorder-title {
+        font-size: 1.8rem;
+    }
+
+    .myorder-product {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .myorder-product-image {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+
+    .myorder-total {
+        text-align: left;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .myorder-title {
+        font-size: 1.5rem;
+    }
+
+    .order-id {
+        font-size: 16px;
+    }
+
+    .myorder-status {
+        font-size: 0.75rem;
+    }
+
+    .myorder-product-details h5 {
+        font-size: 14px;
+    }
+
+    .myorder-product-details p {
+        font-size: 13px;
+    }
+
+    .myorder-total {
+        font-size: 14px;
+    }
+}

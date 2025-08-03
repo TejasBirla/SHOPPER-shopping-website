@@ -3,6 +3,8 @@
     padding-top: 5rem;
     margin-bottom: 13rem;
     font-family: Arial, sans-serif;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .loading-msg p {
@@ -11,9 +13,49 @@
 }
 
 .success-msg {
-    color: green;
+    color: #2ecc71;
+}
+
+.success-msg h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.success-msg p {
+    font-size: 1.2rem;
+    color: #555;
 }
 
 .error-msg {
-    color: red;
+    color: #e74c3c;
+}
+
+.error-msg h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.error-msg p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .payment-status-page {
+        padding-top: 3rem;
+        margin-bottom: 8rem;
+    }
+
+    .loading-msg p,
+    .success-msg p,
+    .error-msg p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .success-msg h2,
+    .error-msg h2 {
+        font-size: 1.5rem;
+    }
 }

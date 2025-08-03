@@ -11,8 +11,7 @@
     font-size: 50px;
 }
 
-.related-products hr
-{
+.related-products hr {
     width: 200px;
     height: 6px;
     border-radius: 10px;
@@ -20,8 +19,7 @@
 
 }
 
-.related-product-items
-{
+.related-product-items {
     display: flex;
     gap: 25px;
     margin-top: 50px;
@@ -94,6 +92,8 @@
 @media (max-width:500px) {
     .related-products {
         height: 90vh;
+        margin-bottom: 130px;
+        margin-top: 35px;
     }
 
     .related-product-items {

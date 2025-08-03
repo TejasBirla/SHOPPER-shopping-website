@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .hero {
     height: 100vh;
     background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
@@ -176,11 +170,11 @@
 
 
     .hero-left-sec h2 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .hero-left-sec p {
-        font-size: 50px;
+        font-size: 44px;
     }
 
     .hero-new-btn {
