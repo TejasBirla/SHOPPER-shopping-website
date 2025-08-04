@@ -8,9 +8,8 @@ export default function ShopCategory(props) {
 
   return (
     <>
-      <div className="shop-category">
+      <div>
         <img className="shop-category-banner" src={props.banner} alt="" />
-
         <div className="shop-category-products">
           {all_product.map((value, index) => {
             if (props.category.toLowerCase() === value.category.toLowerCase()) {
