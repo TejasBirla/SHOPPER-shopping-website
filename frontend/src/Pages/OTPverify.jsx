@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function OTPverify() {
-  const [otp, setOtp] = useState(new Array(6).fill(""));
+  const [otp, setOtp] = useState(new Array(4).fill(""));
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const inputsRef = useRef([]);
@@ -55,7 +55,11 @@ export default function OTPverify() {
     setError("");
     setMessage("");
 
-    if (element.value && index < 5) {
+    if (
+      element.value &&
+      index < otp.length - 1 &&
+      inputsRef.current[index + 1]
+    ) {
       inputsRef.current[index + 1].focus();
     }
   };
@@ -68,8 +72,8 @@ export default function OTPverify() {
 
   const OTP_api_call = async () => {
     const code = otp.join("");
-    if (code.length < 6) {
-      setError("Please enter the complete 6-digit OTP.");
+    if (code.length < 4) {
+      setError("Please enter the complete 4-digit OTP.");
       return;
     }
 
@@ -95,8 +99,8 @@ export default function OTPverify() {
           data.message || "Invalid or expired OTP. Please request a new one."
         );
         setMessage("");
-        setOtp(new Array(6).fill(""));
-        inputsRef.current[0].focus();
+        setOtp(new Array(4).fill(""));
+        inputsRef.current[0]?.focus();
       }
     } catch (err) {
       console.error("Error:", err);
@@ -105,27 +109,33 @@ export default function OTPverify() {
   };
 
   const handleResendOTP = async () => {
-    let response = await fetch(`${BASE_URL}/api/users/resend-code`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
+    try {
+      const response = await fetch(`${BASE_URL}/api/users/resend-code`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
-    let data = await response.json();
-    if (data.success) {
-      setMessage(data.message);
-      setError("");
-      const newExpiry = Date.now() + 2 * 60 * 1000;
-      localStorage.setItem("otpExpiry", newExpiry);
-      setTimer(120);
-      setResendTrigger((prev) => prev + 1);
-    } else {
-      setError(data.message);
-      setMessage("");
-      setOtp(new Array(6).fill(""));
-      inputsRef.current[0].focus();
+      const data = await response.json();
+      if (data.success) {
+        setMessage(data.message);
+        setError("");
+        const newExpiry = Date.now() + 2 * 60 * 1000;
+        localStorage.setItem("otpExpiry", newExpiry);
+        setTimer(120);
+        setResendTrigger((prev) => prev + 1);
+         setOtp(new Array(4).fill(""));
+         inputsRef.current[0]?.focus();
+      } else {
+        setError(data.message);
+        setMessage("");
+        setOtp(new Array(4).fill(""));
+        inputsRef.current[0]?.focus();
+      }
+    } catch (err) {
+      setError("Unable to resend OTP at the moment.");
     }
   };
 
