@@ -112,19 +112,20 @@ export const sendVerificationCode = async (req, res) => {
       });
     }
 
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const code = Math.floor(1000 + Math.random() * 9000).toString();
+    console.log("Code created:", code);
     const newCode = new VerificationCode({ email, code });
     await newCode.save();
-
+    
     const subject = "Password Reset Verification Code - Shopper";
     const text = `Dear user,\n\nYour verification code for resetting your password is: ${code}\n\nPlease note that this code is valid for 2 minutes.\n\nIf you did not request this, please ignore this email.\n\nThank you,\nTeam Shopper`;
-
+    
     sendMail(email, subject, text);
-
+    
     return res.json({
       success: true,
       message:
-        "A verification code has been sent to your email address. Please check your inbox.",
+      "A verification code has been sent to your email address. Please check your inbox.",
     });
   } catch (error) {
     console.error("Error occurred while sending verification code:", error);
@@ -144,7 +145,7 @@ export const verifyCode = async (req, res) => {
       message: "Email and verification code is required.",
     });
   }
-
+  
   try {
     const record = await VerificationCode.findOne({ email, code });
     if (!record) {
@@ -153,19 +154,19 @@ export const verifyCode = async (req, res) => {
         message: "Invalid verification code.",
       });
     }
-
+    
     const codeCreationTime = record.createdAt;
     const currentTime = Date.now();
     const timeDifference = (currentTime - codeCreationTime) / 1000;
-
+    
     if (timeDifference > 120) {
       return res.json({
         success: false,
         message:
-          "Verification code is expired. Please request for new verification code.",
+        "Verification code is expired. Please request for new verification code.",
       });
     }
-
+    
     return res.json({
       success: true,
       message: "Verification successful. You may now reset your password.",
@@ -181,14 +182,14 @@ export const verifyCode = async (req, res) => {
 
 export const resetPassword = async (req, res) => {
   const { email, newPassword } = req.body;
-
+  
   if (!email || !newPassword) {
     return res.json({
       success: false,
       message: "Email and password are required.",
     });
   }
-
+  
   try {
     const user = await Users.findOne({ email });
     if (!user) {
@@ -197,10 +198,10 @@ export const resetPassword = async (req, res) => {
         message: "No account found with the provided email.",
       });
     }
-
+    
     user.password = newPassword;
     await user.save();
-
+    
     return res.json({
       success: true,
       message: "Password has been successfully reset.",
@@ -216,14 +217,14 @@ export const resetPassword = async (req, res) => {
 
 export const resendOtp = async (req, res) => {
   const { email } = req.body;
-
+  
   if (!email) {
     return res.json({
       success: false,
       message: "Email address is required. Please provide a valid email.",
     });
   }
-
+  
   try {
     const existingUser = await Users.findOne({ email });
     if (!existingUser) {
@@ -232,8 +233,9 @@ export const resendOtp = async (req, res) => {
         message: "This email is not registered. Please signup first.",
       });
     }
-
+    
     const code = Math.floor(1000 + Math.random() * 9000).toString();
+    console.log("RESET Code created:", code);
     const newCode = new VerificationCode({ email, code });
     await newCode.save();
 
