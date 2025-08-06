@@ -149,7 +149,7 @@ export default function OTPverify() {
             ))}
           </div>
 
-          <div className="timer-container">
+          <div>
             {timer > 0 ? (
               <p className="timer-paragraph">
                 Time Remaining: <span>{timer} sec</span>
