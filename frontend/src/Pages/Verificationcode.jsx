@@ -52,6 +52,7 @@ export default function Verificationcode() {
 
     if (OTPRequestDisabled) {
       setError("You can request a new OTP after 5 minutes.");
+      setMessage("");
       return;
     }
 
@@ -107,14 +108,9 @@ export default function Verificationcode() {
           <p className="info-message">
             Enter your email address to get the verification code.
           </p>
-          <button onClick={validateForm} disabled={OTPRequestDisabled}>
-            Verify
-          </button>
-          {message ? (
-            <p className="verification-success">{message}</p>
-          ) : (
-            <p className="verification-error">{error}</p>
-          )}
+          <button onClick={validateForm}>Verify</button>
+          {message && <p className="verification-success">{message}</p>}
+          {error && <p className="verification-error">{error}</p>}
         </div>
       </div>
     </div>
