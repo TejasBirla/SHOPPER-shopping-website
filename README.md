@@ -46,7 +46,7 @@ The project consists of three main parts:
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB with Mongoose
 - **Authentication**: JWT
-- **Email Services**: Nodemailer
+- **Email Services**: Third party service (Resend)
 
 ## 🧠 Learning Goals
 
